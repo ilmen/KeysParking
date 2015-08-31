@@ -24,7 +24,7 @@ namespace KeysParkingService.Models
             return keyStorage;
         }
 
-        public void SetKeyList(IList<Key> keys)
+        public static void SetKeyList(IList<Key> keys)
         {
             keyStorage = keys;
         }

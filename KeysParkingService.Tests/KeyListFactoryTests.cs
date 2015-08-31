@@ -15,8 +15,8 @@ namespace KeysParkingService.Tests
         public void SetKeyList_EmptyList_ReturnsEmptyList()
         {
             // arrange
+            KeyListFactory.SetKeyList(new List<Key>());
             var factory = new KeyListFactory();
-            factory.SetKeyList(new List<Key>());
 
             // act
             var emptyList = factory.Create();
@@ -31,8 +31,8 @@ namespace KeysParkingService.Tests
             var key1 = new Key() { Id = 1 };
             var key2 = new Key() { Id = 2 };
             var key3 = new Key() { Id = 3 };
+            KeyListFactory.SetKeyList(new List<Key>() { key1, key2, key3 });
             var factory = new KeyListFactory();
-            factory.SetKeyList(new List<Key>() { key1, key2, key3 });
 
             var list = factory.Create().ToList();
 
