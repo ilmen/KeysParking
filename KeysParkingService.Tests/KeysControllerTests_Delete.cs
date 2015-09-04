@@ -10,8 +10,22 @@ using System.Threading.Tasks;
 namespace KeysParkingService.Tests
 {
     [TestFixture]
-    public class KeysControllerTests
+    public class KeysControllerTests_Delete
     {
+        #region Help methods
+        private List<Key> GetLongKeyList()
+        {
+            return new List<Key>()
+            {
+                new Key() { Id = 1, Login = "login1", Password = "password1" },
+                new Key() { Id = 2, Login = "login2", Password = "password2" },
+                new Key() { Id = 3, Login = "login3", Password = "password3" },
+                new Key() { Id = 4, Login = "login4", Password = "password4" },
+                new Key() { Id = 5, Login = "login5", Password = "password5" },
+            };
+        }
+        #endregion
+
         [Test]
         public void Delete_LongKeyList_KeyBeDeleted()
         {
@@ -45,7 +59,7 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Delete_EmptyList_CallDeleteWithoutException()
+        public void Delete_EmptyKeyList_CallDeleteWithoutException()
         {
             // arrange
             KeyListFactory.SetKeyList(new List<Key>());
@@ -69,18 +83,6 @@ namespace KeysParkingService.Tests
 
             // assert
             Assert.True(list.Count == GetLongKeyList().Count);
-        }
-
-        private List<Key> GetLongKeyList()
-        {
-            return new List<Key>()
-            {
-                new Key() { Id = 1, Login = "login1", Password = "password1" },
-                new Key() { Id = 2, Login = "login2", Password = "password2" },
-                new Key() { Id = 3, Login = "login3", Password = "password3" },
-                new Key() { Id = 4, Login = "login4", Password = "password4" },
-                new Key() { Id = 5, Login = "login5", Password = "password5" },
-            };
         }
     }
 }
