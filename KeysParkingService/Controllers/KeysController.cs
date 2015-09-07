@@ -1,4 +1,5 @@
 ﻿using KeysParkingService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -37,12 +38,16 @@ namespace KeysParkingService.Controllers
         // POST api/keys
         public void Post([FromBody]Key value)
         {
+            if (value == null) return;
+            if (KeyStorage.Any(x => x.Id == value.Id)) throw new InvalidOperationException("WrongId. Элемент с таким Id уже существует");
             KeyStorage.Add(value);
         }
 
         // PUT api/keys/5
         public void Put(int id, [FromBody]Key value)
         {
+            if (id != value.Id) throw new ArgumentException("WrongId. Id переданный как параметр метода и Id как поле объекта value не совпадают.");
+
             // updating item accross removing
             Delete(id);
             Post(value);

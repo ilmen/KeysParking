@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace KeysParkingService.Tests
 {
     [TestFixture]
-    public class KeysControllerTest_Get
+    public class KeysControllerTests_Post
     {
         #region Help methods
         private List<Key> GetLongKeyList()
@@ -27,55 +27,49 @@ namespace KeysParkingService.Tests
         #endregion
 
         [Test]
-        public void Get_EmptyKeyList_ReturnsNull()
+        public void Post_NewValue_ValueAddedToKeyList()
         {
             // arrange
+            var shortList = GetLongKeyList();
+            var value = new Key() {
+                Id = 6,
+                Login = "OtherLogin",
+                Password = "OtherPassword"
+            };
+            if (shortList.Any(x => x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
+
+            KeyListFactory.SetKeyList(shortList);
+            var controller = new KeysController();
+
+            // act
+            controller.Post(value);
+            var list = controller.Get();
+
+            // assert
+            Assert.NotNull(list.SingleOrDefault(x => x.Id == value.Id));
+        }
+
+        [Test]
+        public void Post_NullValue_KeyListNotChanged()
+        {
             KeyListFactory.SetKeyList(new List<Key>());
             var controller = new KeysController();
 
-            // act
-            var key = controller.Get(1);
+            controller.Post(null);
+            var list = controller.Get();
 
-            // assert
-            Assert.Null(key);
+            Assert.True(list.Count() == 0);
         }
 
         [Test]
-        public void Get_CorrectId_ReturnsCorrectKeys()
+        public void Post_DublicateValueId_ThrowsException()
         {
             var list = GetLongKeyList();
+            var key = list.First();
             KeyListFactory.SetKeyList(list);
             var controller = new KeysController();
 
-            // act
-            var key = controller.Get(list.First().Id);
-
-            // assert
-            Assert.True(list.First().Id == key.Id);
-        }
-
-        [Test]
-        public void Get_Always_ReturnsKeyInstance()
-        {
-            var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
-            var controller = new KeysController();
-
-            var key = controller.Get(list.First().Id);
-
-            Assert.IsInstanceOf<Key>(key);
-        }
-        
-        [Test]
-        public void Get_WrongId_ReturnsNull()
-        {
-            var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
-            var controller = new KeysController();
-
-            var key = controller.Get(-1);
-
-            Assert.Null(key);
+            Assert.Catch<InvalidOperationException>(new TestDelegate(() => controller.Post(key)),"WrongId");
         }
     }
 }

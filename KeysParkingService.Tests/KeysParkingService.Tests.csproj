@@ -46,9 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyListFactoryTests.cs" />
+    <Compile Include="KeysControllerTests_Post.cs" />
     <Compile Include="KeysControllerTests_Delete.cs" />
     <Compile Include="KeysControllerTests_GetAll.cs" />
-    <Compile Include="KeysControllerTest_Get.cs" />
+    <Compile Include="KeysControllerTests_Get.cs" />
+    <Compile Include="KeysControllerTests_Put.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
