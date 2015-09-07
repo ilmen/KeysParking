@@ -55,14 +55,14 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void GetAll_Alweays_ReturnsInstancesListOfKey()
+        public void GetAll_Always_ReturnsIEnumerableKeyCollection()
         {
             KeyListFactory.SetKeyList(new List<Key>());
             var controller = new KeysController();
 
             var list = controller.Get();
 
-            Assert.IsInstanceOf<List<Key>>(list);
+            Assert.IsInstanceOf<IEnumerable<Key>>(list);
         }
 
         [Test]
@@ -76,6 +76,53 @@ namespace KeysParkingService.Tests
 
             Assert.True(list.Count() == etalonList.Count());
             Assert.True(list.All(x => etalonList.Contains(x)));
+        }
+
+        [Test]
+        public void GetAll_Always_CallKeyListFactory()
+        {
+            var factoryMock = new KeyListFactoryFake(GetLongKeyList());
+            KeysControllerWithKeyListFactoryInteractionTest.KeyListFactoryMock = factoryMock;
+            var controller = new KeysControllerWithKeyListFactoryInteractionTest();
+
+            var list = controller.Get();
+
+            Assert.True(factoryMock.WasCalled);
+        }
+    }
+
+    public class KeysControllerWithKeyListFactoryInteractionTest : KeysController
+    {
+        public static KeyListFactory KeyListFactoryMock
+        { get; set; }
+
+        protected override KeyListFactory GetKeyListFactory()
+        {
+            return KeyListFactoryMock;
+        }
+    }
+
+    /// <summary>
+    /// Фабрика ключей для тестирования взаимодействия с классом KeysController
+    /// </summary>
+    public class KeyListFactoryFake : KeyListFactory
+    {
+        public bool WasCalled
+        { get; set; }
+
+        public IList<Key> KeyList
+        { get; set; }
+
+        public KeyListFactoryFake(IList<Key> keyList)
+        {
+            this.KeyList = keyList;
+        }
+
+        public override IList<Key> Create()
+        {
+            WasCalled = true;
+
+            return KeyList;
         }
     }
 }

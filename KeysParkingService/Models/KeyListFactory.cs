@@ -19,7 +19,7 @@ namespace KeysParkingService.Models
             }
         }
 
-        public IList<Key> Create()
+        public virtual IList<Key> Create()
         {
             return keyStorage;
         }
@@ -29,17 +29,4 @@ namespace KeysParkingService.Models
             keyStorage = keys;
         }
     }
-
-    //[TestFixture]
-    //public class KeyListFactoryTest
-    //{
-    //    [Test]
-    //    public void SetKeyList_Empty_RerurnsEmpty()
-    //    {
-    //        var emptyKeyStorage = new List<Key>();
-
-    //        var keyStorageFactory = new KeyStorageFactory();
-    //        keyStorageFactory
-    //    }
-    //}
 }

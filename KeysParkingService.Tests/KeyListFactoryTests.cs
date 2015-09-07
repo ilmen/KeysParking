@@ -12,6 +12,17 @@ namespace KeysParkingService.Tests
     public class KeyListFactoryTests
     {
         [Test]
+        public void SetKeyList_Always_ReturnsNotNull()
+        {
+            KeyListFactory.SetKeyList(new List<Key>());
+            var factory = new KeyListFactory();
+
+            var list = factory.Create();
+
+            Assert.NotNull(list);
+        }
+
+        [Test]
         public void SetKeyList_EmptyList_ReturnsEmptyList()
         {
             // arrange

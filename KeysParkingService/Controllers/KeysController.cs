@@ -11,8 +11,15 @@ namespace KeysParkingService.Controllers
 
         public KeysController()
         {
-            var factory = new KeyListFactory();
-            KeyStorage = factory.Create();
+            KeyStorage = GetKeyListFactory().Create();
+        }
+
+        /// <summary>
+        /// Seam for testing KeysController and KeyListFactory interaction
+        /// </summary>
+        protected virtual KeyListFactory GetKeyListFactory()
+        {
+            return new KeyListFactory();
         }
 
         // GET: api/keys
