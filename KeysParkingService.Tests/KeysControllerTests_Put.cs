@@ -50,14 +50,47 @@ namespace KeysParkingService.Tests
 
         [Test]
         public void Put_CorrectId_ElementOfKeyListUpdated()
-        { throw new NotImplementedException(); }
+        {
+            var etalonList = GetLongKeyList();
+            var valueId = etalonList.First().Id;
+            var value = new Key() {
+                Id = valueId,
+                Login = "testUpdate",
+                Password = "testUpdate"
+            };
+            KeyListFactory.SetKeyList(etalonList);
+            var controller = new KeysController();
+
+            controller.Put(valueId, value); 
+            var list = controller.Get();
+
+            var updatedValue = list.Single(x => x.Id == valueId);
+            Assert.True(updatedValue.Login == value.Login);
+            Assert.True(updatedValue.Password == value.Password);
+        }
 
         [Test]
         public void Put_CorrectId_OtherElementsOfKeyListNotUpdated()
-        { throw new NotImplementedException(); }
+        {
+            var etalonList = GetLongKeyList();
+            var value = new Key()
+            {
+                Id = 3,
+                Login = "testUpdate",
+                Password = "testUpdate"
+            };
+            KeyListFactory.SetKeyList(etalonList);
+            var controller = new KeysController();
+
+            controller.Put(value.Id, value);
+            var list = controller.Get();
+
+            var notUpdatedElements = list.Where(x => x.Id != value.Id);
+            Assert.True(notUpdatedElements.All(x => x.Login == ("login" + x.Id) && x.Password == ("password" + x.Id)));
+        }
 
         [Test]
-        public void Put_IdAsMethodArgumentAndIdAsValueFielddNotEquals_ThrowArgumentException()
+        public void Put_IdAsMethodArgumentAndIdAsValueFieldNotEquals_ThrowArgumentException()
         {
             var list = GetLongKeyList();
             var value = list.First();
