@@ -38,7 +38,7 @@ namespace KeysParkingService.Tests
             };
             if (shortList.Any(x => x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
 
-            KeyListFactory.SetKeyList(shortList);
+            MockKeyListFactory.SetNewTestInstance(shortList);
             var controller = new KeysController();
 
             // act
@@ -52,7 +52,7 @@ namespace KeysParkingService.Tests
         [Test]
         public void Post_NullValue_KeyListNotChanged()
         {
-            KeyListFactory.SetKeyList(new List<Key>());
+            MockKeyListFactory.SetNewTestInstance(new List<Key>());
             var controller = new KeysController();
 
             controller.Post(null);
@@ -66,7 +66,7 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongKeyList();
             var key = list.First();
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
 
             Assert.Catch<InvalidOperationException>(new TestDelegate(() => controller.Post(key)),"WrongId");

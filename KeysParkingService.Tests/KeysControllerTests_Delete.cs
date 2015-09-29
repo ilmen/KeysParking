@@ -31,7 +31,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var elementToRemove = list.First();
             var controller = new KeysController();
 
@@ -48,7 +48,7 @@ namespace KeysParkingService.Tests
             // arrange
             var key = new Key() { Id = 1, Login = "l", Password = "p" };
             var list = new List<Key>() { key };
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
 
             // act
@@ -62,7 +62,7 @@ namespace KeysParkingService.Tests
         public void Delete_EmptyKeyList_CallDeleteWithoutException()
         {
             // arrange
-            KeyListFactory.SetKeyList(new List<Key>());
+            MockKeyListFactory.SetNewTestInstance(new List<Key>());
             var controller = new KeysController();
 
             // act
@@ -75,7 +75,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
 
             // act

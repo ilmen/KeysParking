@@ -30,7 +30,7 @@ namespace KeysParkingService.Tests
         public void Get_EmptyKeyList_ReturnsNull()
         {
             // arrange
-            KeyListFactory.SetKeyList(new List<Key>());
+            MockKeyListFactory.SetNewTestInstance(new List<Key>());
             var controller = new KeysController();
 
             // act
@@ -44,7 +44,7 @@ namespace KeysParkingService.Tests
         public void Get_CorrectId_ReturnsCorrectKeys()
         {
             var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
 
             // act
@@ -58,7 +58,7 @@ namespace KeysParkingService.Tests
         public void Get_Always_ReturnsKeyInstance()
         {
             var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
 
             var key = controller.Get(list.First().Id);
@@ -70,7 +70,7 @@ namespace KeysParkingService.Tests
         public void Get_WrongId_ReturnsNull()
         {
             var list = GetLongKeyList();
-            KeyListFactory.SetKeyList(list);
+            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
 
             var key = controller.Get(-1);

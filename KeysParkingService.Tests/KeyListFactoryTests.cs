@@ -14,10 +14,9 @@ namespace KeysParkingService.Tests
         [Test]
         public void SetKeyList_Always_ReturnsNotNull()
         {
-            KeyListFactory.SetKeyList(new List<Key>());
-            var factory = new KeyListFactory();
+            MockKeyListFactory.SetNewTestInstance(new List<Key>());
 
-            var list = factory.Create();
+            var list = KeyListFactory.Instance.Create();
 
             Assert.NotNull(list);
         }
@@ -26,11 +25,10 @@ namespace KeysParkingService.Tests
         public void SetKeyList_EmptyList_ReturnsEmptyList()
         {
             // arrange
-            KeyListFactory.SetKeyList(new List<Key>());
-            var factory = new KeyListFactory();
-
+            MockKeyListFactory.SetNewTestInstance(new List<Key>());
+            
             // act
-            var emptyList = factory.Create();
+            var emptyList = KeyListFactory.Instance.Create();
 
             // assert
             Assert.IsTrue(emptyList.Count == 0);
@@ -42,10 +40,9 @@ namespace KeysParkingService.Tests
             var key1 = new Key() { Id = 1 };
             var key2 = new Key() { Id = 2 };
             var key3 = new Key() { Id = 3 };
-            KeyListFactory.SetKeyList(new List<Key>() { key1, key2, key3 });
-            var factory = new KeyListFactory();
+            MockKeyListFactory.SetNewTestInstance(new List<Key>() { key1, key2, key3 });
 
-            var list = factory.Create().ToList();
+            var list = KeyListFactory.Instance.Create().ToList();
 
             Assert.Contains(key1, list);
             Assert.Contains(key2, list);

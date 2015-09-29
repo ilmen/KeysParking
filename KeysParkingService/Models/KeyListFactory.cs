@@ -20,7 +20,7 @@ namespace KeysParkingService.Models
 
         protected IList<Key> KeyStorage { get; set; }
 
-        public IList<Key> Create()
+        public virtual IList<Key> Create()
         {
             return KeyStorage;
         }
@@ -32,16 +32,29 @@ namespace KeysParkingService.Models
         }
     }
 
-    public class TestKeyListFactory : KeyListFactory
+    public class MockKeyListFactory : KeyListFactory
     {
-        public static void SetNewTestInstance(IList<Key> keys)
+        public static MockKeyListFactory SetNewTestInstance(IList<Key> keys)
         {
-            Instance = new TestKeyListFactory(keys);
+            var fake = new MockKeyListFactory(keys);
+            Instance = fake;
+
+            return fake;
         }
 
-        protected TestKeyListFactory(IList<Key> keys)
+        public bool CreateMethodWasCalled
+        { get; private set; }
+
+        protected MockKeyListFactory(IList<Key> keys)
         {
             KeyStorage = keys;
+        }
+
+        public override IList<Key> Create()
+        {
+            CreateMethodWasCalled = true;
+
+            return base.Create();
         }
     }
 }
