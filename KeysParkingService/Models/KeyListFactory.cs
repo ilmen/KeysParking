@@ -4,29 +4,44 @@ namespace KeysParkingService.Models
 {
     public class KeyListFactory
     {
-        static IList<Key> keyStorage;
-
-        public KeyListFactory()
+        private static KeyListFactory _Instance = new KeyListFactory();
+        public static KeyListFactory Instance
         {
-            // todo: добавить работу с БД
-            if (keyStorage == null)
+            get
             {
-                keyStorage = new List<Key>()
-                {
-                    new Key() { Id = 1, Login = "qwerty", Password = "qwerty" },
-                    new Key() { Id = 2, Login = "adm", Password = "adm" },
-                };
+                return _Instance;
+            }
+
+            protected set
+            {
+                _Instance = value;
             }
         }
 
-        public virtual IList<Key> Create()
+        protected IList<Key> KeyStorage { get; set; }
+
+        public IList<Key> Create()
         {
-            return keyStorage;
+            return KeyStorage;
         }
 
-        public static void SetKeyList(IList<Key> keys)
+        protected KeyListFactory()
         {
-            keyStorage = keys;
+            var dbContext = new DB();
+            KeyStorage = new KeysDbContextIListAdaptor(dbContext);
+        }
+    }
+
+    public class TestKeyListFactory : KeyListFactory
+    {
+        public static void SetNewTestInstance(IList<Key> keys)
+        {
+            Instance = new TestKeyListFactory(keys);
+        }
+
+        protected TestKeyListFactory(IList<Key> keys)
+        {
+            KeyStorage = keys;
         }
     }
 }
