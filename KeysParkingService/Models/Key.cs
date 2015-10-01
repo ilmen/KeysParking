@@ -13,11 +13,15 @@ namespace KeysParkingService.Models
     public class Key
     {
         [Key]
-        [Column("id")]
+        [Column("KeyId")]
         public int Id
         { get; set; }
 
-        [Column("create_time")]
+        [Column("GroupId")]
+        public int GroupId
+        { get; set; }
+
+        [Column("CreateTime")]
         public DateTime CreateTime
         { get; set; }
 
