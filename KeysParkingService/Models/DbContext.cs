@@ -88,7 +88,7 @@ namespace KeysParkingService.Models
 
         public int Count
         {
-            get { return  db.Keys..CountAsync(); }
+            get { return db.Keys.Local.Count; }
         }
 
         public bool IsReadOnly

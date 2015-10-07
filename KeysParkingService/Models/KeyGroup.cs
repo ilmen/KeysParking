@@ -12,7 +12,7 @@ namespace KeysParkingService.Models
     {
         [Key]
         [Column("GroupId")]
-        public int Id
+        public Guid GroupId
         { get; set; }
 
         [Column("Name")]

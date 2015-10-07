@@ -18,7 +18,7 @@ namespace KeysParkingService.Models
         { get; set; }
 
         [Column("GroupId")]
-        public int GroupId
+        public Guid GroupId
         { get; set; }
 
         [Column("CreateTime")]

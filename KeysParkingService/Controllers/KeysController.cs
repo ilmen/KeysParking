@@ -18,7 +18,7 @@ namespace KeysParkingService.Controllers
         // GET: api/keys
         public IEnumerable<Key> Get()
         {
-            return KeyStorage.AsEnumerable();
+            return KeyStorage;
         }
 
         // GET api/keys/5
