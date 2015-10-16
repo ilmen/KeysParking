@@ -7,7 +7,10 @@ namespace KeysParkingService.Models
     public class DB : DbContext
     {
         public DB() : base(nameOrConnectionString: "MonkeyFist") { }
+        
         public DbSet<Key> Keys { get; set; }
+
+        public DbSet<KeyGroup> Groups { get; set; }
     }
 
     public class KeysDbContextIListAdaptor : IList<Key>
