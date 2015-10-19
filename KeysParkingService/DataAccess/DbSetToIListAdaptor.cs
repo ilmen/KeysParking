@@ -2,24 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace KeysParkingService.Models
+namespace KeysParkingService.DataAccess
 {
-    public class DB : DbContext
-    {
-        public DB() : base(nameOrConnectionString: "MonkeyFist") { }
-        
-        public DbSet<Key> Keys { get; set; }
-
-        public DbSet<KeyGroup> Groups { get; set; }
-    }
-
-    public class DbContextIListAdaptor<T> : IList<T>
+    public class DbSetToIListAdaptor<T> : IList<T>
         where T : class
     {
-        DB db;
+        DbContextKeyParking db;
         DbSet<T> dbCollection;
 
-        public DbContextIListAdaptor(DB dbContext, DbSet<T> dbSet)
+        public DbSetToIListAdaptor(DbContextKeyParking dbContext, DbSet<T> dbSet)
         {
             db = dbContext;
             dbCollection = dbSet;
@@ -100,7 +91,7 @@ namespace KeysParkingService.Models
         public bool IsReadOnly
         {
             get { throw new NotImplementedException(); }
-        } 
+        }
         #endregion
     }
 }

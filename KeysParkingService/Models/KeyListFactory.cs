@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using KeysParkingService.DataAccess;
+using System.Collections.Generic;
 
 namespace KeysParkingService.Models
 {
@@ -27,8 +28,8 @@ namespace KeysParkingService.Models
 
         protected KeyListFactory()
         {
-            var dbContext = new DB();
-            KeyStorage = new DbContextIListAdaptor<Key>(dbContext, dbContext.Keys);
+            var dbContext = new DbContextKeyParking();
+            KeyStorage = new DbSetToIListAdaptor<Key>(dbContext, dbContext.Keys);
         }
     }
 
