@@ -129,6 +129,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\KeyGroupsController.cs" />
     <Compile Include="Controllers\KeysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -136,7 +137,9 @@
     <Compile Include="Models\DbContext.cs" />
     <Compile Include="Models\Key.cs" />
     <Compile Include="Models\KeyGroup.cs" />
+    <Compile Include="Models\KeyGroupListFactory.cs" />
     <Compile Include="Models\KeyListFactory.cs" />
+    <Compile Include="Models\RestController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

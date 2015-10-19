@@ -28,7 +28,7 @@ namespace KeysParkingService.Models
         protected KeyListFactory()
         {
             var dbContext = new DB();
-            KeyStorage = new KeysDbContextIListAdaptor(dbContext);
+            KeyStorage = new DbContextIListAdaptor<Key>(dbContext, dbContext.Keys);
         }
     }
 

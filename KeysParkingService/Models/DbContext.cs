@@ -13,31 +13,34 @@ namespace KeysParkingService.Models
         public DbSet<KeyGroup> Groups { get; set; }
     }
 
-    public class KeysDbContextIListAdaptor : IList<Key>
+    public class DbContextIListAdaptor<T> : IList<T>
+        where T : class
     {
         DB db;
+        DbSet<T> dbCollection;
 
-        public KeysDbContextIListAdaptor(DB dbContext)
+        public DbContextIListAdaptor(DB dbContext, DbSet<T> dbSet)
         {
             db = dbContext;
+            dbCollection = dbSet;
         }
 
-        public void Add(Key item)
+        public void Add(T item)
         {
-            db.Keys.Add(item);
+            dbCollection.Add(item);
             db.SaveChanges();
         }
 
-        public bool Remove(Key item)
+        public bool Remove(T item)
         {
-            db.Keys.Remove(item);
+            dbCollection.Remove(item);
             db.SaveChanges();
             return true;
         }
 
-        public IEnumerator<Key> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            var enumerable = db.Keys as IEnumerable<Key>;
+            var enumerable = dbCollection as IEnumerable<T>;
             return enumerable.GetEnumerator();
         }
 
@@ -47,12 +50,12 @@ namespace KeysParkingService.Models
         }
 
         #region Not implemented methods
-        public int IndexOf(Key item)
+        public int IndexOf(T item)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(int index, Key item)
+        public void Insert(int index, T item)
         {
             throw new NotImplementedException();
         }
@@ -62,7 +65,7 @@ namespace KeysParkingService.Models
             throw new NotImplementedException();
         }
 
-        public Key this[int index]
+        public T this[int index]
         {
             get
             {
@@ -79,12 +82,12 @@ namespace KeysParkingService.Models
             throw new NotImplementedException();
         }
 
-        public bool Contains(Key item)
+        public bool Contains(T item)
         {
             throw new NotImplementedException();
         }
 
-        public void CopyTo(Key[] array, int arrayIndex)
+        public void CopyTo(T[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
@@ -100,5 +103,4 @@ namespace KeysParkingService.Models
         } 
         #endregion
     }
-
 }
