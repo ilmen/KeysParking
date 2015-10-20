@@ -3,12 +3,22 @@ using System.Data.Entity;
 
 namespace KeysParkingService.DataAccess
 {
-    public class DbContextKeyParking : DbContext
+    public sealed class DbContextKeyParking : DbContext
     {
-        public DbContextKeyParking() : base(nameOrConnectionString: "MonkeyFist") { }
+        private static readonly DbContextKeyParking _Instance = new DbContextKeyParking();
+
+        public static DbContextKeyParking Instance
+        {
+            get
+            {
+                return _Instance;
+            }
+        }
+
+        private DbContextKeyParking() : base(nameOrConnectionString: "MonkeyFist") { }
         
         public DbSet<Key> Keys { get; set; }
 
-        public DbSet<KeyGroup> Groups { get; set; }
+        public DbSet<KeyGroup> KeyGroups { get; set; }
     }
 }

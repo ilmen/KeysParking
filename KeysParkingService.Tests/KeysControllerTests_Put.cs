@@ -37,8 +37,8 @@ namespace KeysParkingService.Tests
                 Password = "OtherPassword"
             };
             if (shortList.Any( x=> x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
-            MockKeyListFactory.SetNewTestInstance(shortList);
             var controller = new KeysController();
+            controller.SetKeyList(shortList);
 
             // act
             controller.Put(value.Id, value);
@@ -58,8 +58,8 @@ namespace KeysParkingService.Tests
                 Login = "testUpdate",
                 Password = "testUpdate"
             };
-            MockKeyListFactory.SetNewTestInstance(etalonList);
             var controller = new KeysController();
+            controller.SetKeyList(etalonList);
 
             controller.Put(valueId, value); 
             var list = controller.Get();
@@ -79,8 +79,8 @@ namespace KeysParkingService.Tests
                 Login = "testUpdate",
                 Password = "testUpdate"
             };
-            MockKeyListFactory.SetNewTestInstance(etalonList);
             var controller = new KeysController();
+            controller.SetKeyList(etalonList);
 
             controller.Put(value.Id, value);
             var list = controller.Get();
@@ -94,8 +94,8 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongKeyList();
             var value = list.First();
-            MockKeyListFactory.SetNewTestInstance(list);
             var controller = new KeysController();
+            controller.SetKeyList(list);
 
             Assert.Catch<ArgumentException>(new TestDelegate(() => controller.Put(-1, value)), "WrongId");
         }

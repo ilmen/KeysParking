@@ -138,8 +138,7 @@
     <Compile Include="DataAccess\DbSetToIListAdaptor.cs" />
     <Compile Include="Models\Key.cs" />
     <Compile Include="Models\KeyGroup.cs" />
-    <Compile Include="Models\KeyGroupListFactory.cs" />
-    <Compile Include="Models\KeyListFactory.cs" />
+    <Compile Include="Models\EntityListFactory.cs" />
     <Compile Include="Models\RestController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,8 +1,11 @@
-﻿using KeysParkingService.Models;
+﻿using KeysParkingService.DataAccess;
+using KeysParkingService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("KeysParkingService.Tests")]
 
 namespace KeysParkingService.Controllers
 {
@@ -12,7 +15,13 @@ namespace KeysParkingService.Controllers
 
         public KeysController()
         {
-            KeyStorage = KeyListFactory.Instance.Create();
+            var dbContext = DbContextKeyParking.Instance;
+            KeyStorage = new DbSetToIListAdaptor<Key>(dbContext, dbContext.Keys);
+        }
+
+        internal void SetKeyList(IList<Key> testList)
+        {
+            this.KeyStorage = testList;
         }
 
         // GET: api/keys

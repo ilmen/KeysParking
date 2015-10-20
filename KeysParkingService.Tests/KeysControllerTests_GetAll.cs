@@ -1,5 +1,6 @@
 ﻿using KeysParkingService.Controllers;
 using KeysParkingService.Models;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -30,8 +31,8 @@ namespace KeysParkingService.Tests
         public void GetAll_EmptyKeyList_ReturnsEmptyList()
         {
             // arrange
-            MockKeyListFactory.SetNewTestInstance(new List<Key>());
             var controller = new KeysController();
+            controller.SetKeyList(new List<Key>());
 
             // act
             var list = controller.Get();
@@ -44,8 +45,8 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_ReturnsNotNull()
         {
             // arrange
-            MockKeyListFactory.SetNewTestInstance(new List<Key>());
             var controller = new KeysController();
+            controller.SetKeyList(new List<Key>());
 
             // act
             var list = controller.Get();
@@ -57,8 +58,8 @@ namespace KeysParkingService.Tests
         [Test]
         public void GetAll_Always_ReturnsIEnumerableKeyCollection()
         {
-            MockKeyListFactory.SetNewTestInstance(new List<Key>());
             var controller = new KeysController();
+            controller.SetKeyList(new List<Key>());
 
             var list = controller.Get();
 
@@ -69,8 +70,8 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_ReturnsAllKeys()
         {
             var etalonList = GetLongKeyList();
-            MockKeyListFactory.SetNewTestInstance(etalonList);
             var controller = new KeysController();
+            controller.SetKeyList(etalonList);
 
             var list = controller.Get();
 
@@ -81,12 +82,13 @@ namespace KeysParkingService.Tests
         [Test]
         public void GetAll_Always_CallKeyListFactory()
         {
-            var mock = MockKeyListFactory.SetNewTestInstance(GetLongKeyList());
+            var mock = Substitute.For<IList<Key>>();
             var controller = new KeysController();
+            controller.SetKeyList(mock);
 
             var list = controller.Get();
 
-            Assert.True(mock.CreateMethodWasCalled);
+            mock.Received();
         }
     }
 }
