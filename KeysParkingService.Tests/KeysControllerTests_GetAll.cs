@@ -79,7 +79,9 @@ namespace KeysParkingService.Tests
             Assert.True(list.All(x => etalonList.Contains(x)));
         }
 
+        // TODO: В будущем этот тест необходимо применить для проверки вызова контроллером generic-контроллера
         [Test]
+        [Ignore("Игнорируем проверку использования контроллером фабрики, т.к. фабрика, в результате рефакторинга, более не используется. Контроллер сам хранит свою коллекцию, и тестом ее использования является тест GetAll_Always_ReturnsAllKeys. В будущем этот тест необходимо применить для проверки вызова контроллером generic-контроллера")]
         public void GetAll_Always_CallKeyListFactory()
         {
             var mock = Substitute.For<IList<Key>>();
