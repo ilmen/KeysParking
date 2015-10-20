@@ -32,7 +32,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var controller = new KeysController();
-            controller.SetKeyList(new List<Key>());
+            controller.SetEntityCollecton(new List<Key>());
 
             // act
             var list = controller.Get();
@@ -46,7 +46,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var controller = new KeysController();
-            controller.SetKeyList(new List<Key>());
+            controller.SetEntityCollecton(new List<Key>());
 
             // act
             var list = controller.Get();
@@ -59,7 +59,7 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_ReturnsIEnumerableKeyCollection()
         {
             var controller = new KeysController();
-            controller.SetKeyList(new List<Key>());
+            controller.SetEntityCollecton(new List<Key>());
 
             var list = controller.Get();
 
@@ -71,7 +71,7 @@ namespace KeysParkingService.Tests
         {
             var etalonList = GetLongKeyList();
             var controller = new KeysController();
-            controller.SetKeyList(etalonList);
+            controller.SetEntityCollecton(etalonList);
 
             var list = controller.Get();
 
@@ -86,7 +86,7 @@ namespace KeysParkingService.Tests
         {
             var mock = Substitute.For<IList<Key>>();
             var controller = new KeysController();
-            controller.SetKeyList(mock);
+            controller.SetEntityCollecton(mock);
 
             var list = controller.Get();
 

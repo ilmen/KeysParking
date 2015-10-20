@@ -10,7 +10,7 @@ namespace KeysParkingService.Models
 {
 
     [Table("keys", Schema = "public")]
-    public class Key
+    public class Key : GenericEntity<int>
     {
         [Key]
         [Column("KeyId")]

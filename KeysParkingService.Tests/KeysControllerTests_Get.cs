@@ -31,7 +31,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var controller = new KeysController();
-            controller.SetKeyList(new List<Key>());
+            controller.SetEntityCollecton(new List<Key>());
 
             // act
             var key = controller.Get(1);
@@ -45,7 +45,7 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongKeyList();
             var controller = new KeysController();
-            controller.SetKeyList(list);
+            controller.SetEntityCollecton(list);
 
             // act
             var key = controller.Get(list.First().Id);
@@ -59,7 +59,7 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongKeyList();
             var controller = new KeysController();
-            controller.SetKeyList(list);
+            controller.SetEntityCollecton(list);
 
             var key = controller.Get(list.First().Id);
 
@@ -71,7 +71,7 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongKeyList();
             var controller = new KeysController();
-            controller.SetKeyList(list);
+            controller.SetEntityCollecton(list);
 
             var key = controller.Get(-1);
 

@@ -33,7 +33,7 @@ namespace KeysParkingService.Tests
             var list = GetLongKeyList();
             var elementToRemove = list.First();
             var controller = new KeysController();
-            controller.SetKeyList(list);
+            controller.SetEntityCollecton(list);
 
             // act
             controller.Delete(elementToRemove.Id);
@@ -49,7 +49,7 @@ namespace KeysParkingService.Tests
             var key = new Key() { Id = 1, Login = "l", Password = "p" };
             var list = new List<Key>() { key };
             var controller = new KeysController();
-            controller.SetKeyList(list);
+            controller.SetEntityCollecton(list);
 
             // act
             controller.Delete(key.Id);
@@ -63,7 +63,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var controller = new KeysController();
-            controller.SetKeyList(new List<Key>());
+            controller.SetEntityCollecton(new List<Key>());
 
             // act
             // assert
@@ -76,7 +76,7 @@ namespace KeysParkingService.Tests
             // arrange
             var list = GetLongKeyList();
             var controller = new KeysController();
-            controller.SetKeyList(list);
+            controller.SetEntityCollecton(list);
 
             // act
             controller.Delete(-1);
