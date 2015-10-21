@@ -3,9 +3,15 @@ using KeysParkingService.Models;
 
 namespace KeysParkingService.Controllers
 {
-    public class KeysController : GenericRestController<Key, int>
+    public class KeysController : AbstractRestController<Key, int>
     {
-        public KeysController() : base(DbContextKeyParking.Instance, DbContextKeyParking.Instance.Keys)
+        private static GenericRestController<Key, int> GetRestController()
+        {
+            return new GenericRestController<Key, int>(DbContextKeyParking.Instance, DbContextKeyParking.Instance.Keys);
+        }
+
+        public KeysController()
+            : base(KeysController.GetRestController())
         {
 
         }

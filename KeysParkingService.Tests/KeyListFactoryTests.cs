@@ -44,10 +44,10 @@ namespace KeysParkingService.Tests
 
     //        var list = EntityListFactory.Instance.Create().ToList();
 
+    //        Assert.True(list.Count == 3);
     //        Assert.Contains(key1, list);
     //        Assert.Contains(key2, list);
     //        Assert.Contains(key3, list);
-    //        Assert.True(list.Count == 3);
     //    }
     //}
 }

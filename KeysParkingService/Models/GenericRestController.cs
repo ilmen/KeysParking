@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace KeysParkingService.Models
 {
-    public class GenericRestController<T, K> : ApiController
+    public class GenericRestController<T, K>
         where T : class, GenericEntity<K>
         where K : IEquatable<K>
     {
