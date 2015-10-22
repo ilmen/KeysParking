@@ -55,6 +55,7 @@
     <Compile Include="KeysControllerTests_Get.cs" />
     <Compile Include="KeysControllerTests_Put.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KeysParkingService\KeysParkingService.csproj">

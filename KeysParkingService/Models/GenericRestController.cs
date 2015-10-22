@@ -20,9 +20,9 @@ namespace KeysParkingService.Models
             EntityStorage = new DbSetToIListAdaptor2<T, K>(dbContext, dbCollection);
         }
 
-        internal void SetEntityCollecton(IList<T> testList)
+        internal GenericRestController(IList<T> testList)
         {
-            this.EntityStorage = testList;
+            EntityStorage = testList;
         }
 
         public IEnumerable<T> Get()
@@ -35,20 +35,20 @@ namespace KeysParkingService.Models
             return EntityStorage.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        public void Post([FromBody]T value)
+        public void Add([FromBody]T value)
         {
             if (value == null) return;
             if (EntityStorage.Any(x => x.Id.Equals(value.Id))) throw new InvalidOperationException("WrongId. Элемент с таким Id уже существует");
             EntityStorage.Add(value);
         }
 
-        public void Put(K id, [FromBody]T value)
+        public void Update(K id, [FromBody]T value)
         {
             if (!id.Equals(value.Id)) throw new ArgumentException("WrongId. Id переданный как параметр метода и Id как поле объекта value не совпадают.");
 
             // updating item accross removing
             Delete(id);
-            Post(value);
+            Add(value);
         }
 
         public void Delete(K id)

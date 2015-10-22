@@ -11,19 +11,24 @@ using System.Threading.Tasks;
 namespace KeysParkingService.Tests
 {
     [TestFixture]
-    public class KeysControllerTests_GetAll
+    public class TestControllerTests_GetAll
     {
         #region Help methods
-        private List<Key> GetLongKeyList()
+        private List<TestEntity> GetLongEntityList()
         {
-            return new List<Key>()
+            return new List<TestEntity>()
             {
-                new Key() { Id = 1, Login = "login1", Password = "password1" },
-                new Key() { Id = 2, Login = "login2", Password = "password2" },
-                new Key() { Id = 3, Login = "login3", Password = "password3" },
-                new Key() { Id = 4, Login = "login4", Password = "password4" },
-                new Key() { Id = 5, Login = "login5", Password = "password5" },
+                new TestEntity() { Id = 1 },
+                new TestEntity() { Id = 2 },
+                new TestEntity() { Id = 3 },
+                new TestEntity() { Id = 4 },
+                new TestEntity() { Id = 5 },
             };
+        }
+
+        private GenericRestController<TestEntity, int> GetController(IList<TestEntity> list)
+        {
+            return new GenericRestController<TestEntity, int>(list);
         }
         #endregion
 
@@ -31,8 +36,7 @@ namespace KeysParkingService.Tests
         public void GetAll_EmptyKeyList_ReturnsEmptyList()
         {
             // arrange
-            var controller = new KeysController();
-            controller.SetEntityCollecton(new List<Key>());
+            var controller = new TestController(new List<TestEntity>());
 
             // act
             var list = controller.Get();
@@ -45,8 +49,7 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_ReturnsNotNull()
         {
             // arrange
-            var controller = new KeysController();
-            controller.SetEntityCollecton(new List<Key>());
+            var controller = new TestController(new List<TestEntity>());
 
             // act
             var list = controller.Get();
@@ -58,8 +61,7 @@ namespace KeysParkingService.Tests
         [Test]
         public void GetAll_Always_ReturnsIEnumerableKeyCollection()
         {
-            var controller = new KeysController();
-            controller.SetEntityCollecton(new List<Key>());
+            var controller = new KeysController(new List<TestEntity>());
 
             var list = controller.Get();
 
@@ -69,9 +71,8 @@ namespace KeysParkingService.Tests
         [Test]
         public void GetAll_Always_ReturnsAllKeys()
         {
-            var etalonList = GetLongKeyList();
-            var controller = new KeysController();
-            controller.SetEntityCollecton(etalonList);
+            var etalonList = GetLongEntityList();
+            var controller = new TestController(etalonList);
 
             var list = controller.Get();
 
@@ -86,7 +87,7 @@ namespace KeysParkingService.Tests
         {
             var mock = Substitute.For<IList<Key>>();
             var controller = new KeysController();
-            controller.SetEntityCollecton(mock);
+            //controller.SetEntityCollecton(mock);
 
             var list = controller.Get();
 

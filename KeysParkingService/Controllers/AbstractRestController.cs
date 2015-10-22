@@ -20,12 +20,6 @@ namespace KeysParkingService.Controllers
             this.controller = restController;
         }
 
-        // TODO: убрать этот public зазор, сделать отдельный класс, наследник от класса GenericRestController, используемый для тестирования. Этом классе протестировать только взаимодействие с GenericRestController
-        public void SetEntityCollecton(IList<T> testList)
-        {
-            controller.SetEntityCollecton(testList);
-        }
-
         public virtual IEnumerable<T> Get()
         {
             return controller.Get();
@@ -38,12 +32,12 @@ namespace KeysParkingService.Controllers
 
         public virtual void Post([FromBody]T value)
         {
-            controller.Post(value);
+            controller.Add(value);
         }
 
         public virtual void Put(K id, [FromBody]T value)
         {
-            controller.Put(id, value);
+            controller.Update(id, value);
         }
 
         public virtual void Delete(K id)

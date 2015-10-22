@@ -8,7 +8,8 @@ namespace KeysParkingService.Controllers
     {
         private static GenericRestController<KeyGroup, Guid> GetRestController()
         {
-            return new GenericRestController<KeyGroup, Guid>(DbContextKeyParking.Instance, DbContextKeyParking.Instance.KeyGroups);
+            var dbContext = DbContextKeyParking.Instance;
+            return new GenericRestController<KeyGroup, Guid>(dbContext, dbContext.KeyGroups);
         }
 
         public KeyGroupsController()
