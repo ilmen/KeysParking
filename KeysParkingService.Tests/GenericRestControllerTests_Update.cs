@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace KeysParkingService.Tests
 {
     [TestFixture]
-    public class GenericRestControllerTests_Put
+    public class GenericRestControllerTests_Update
     {
         #region Help methods
         private List<TestEntity> GetLongEntitiesList()
@@ -27,16 +27,16 @@ namespace KeysParkingService.Tests
         #endregion
 
         [Test]
-        public void Put_WrongId_AddedToEntitiesList()
+        public void Update_WrongId_AddedToEntitiesList()
         {
             // arrange
             var shortList = GetLongEntitiesList();
             var value = new TestEntity() { Id = 6 };
             if (shortList.Any( x=> x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
-            var controller = new TestController(shortList);
+            var controller = new TestableGenericRestController(shortList);
 
             // act
-            controller.Put(value.Id, value);
+            controller.Update(value.Id, value);
             var list = controller.Get();
 
             // assert
@@ -44,14 +44,14 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Put_CorrectId_ElementOfEntitiesListUpdated()
+        public void Update_CorrectId_ElementOfEntitiesListUpdated()
         {
             var etalonList = GetLongEntitiesList();
             var valueId = etalonList.First().Id;
             var value = new TestEntity() { Id = valueId, UniqueId = Guid.NewGuid() };
-            var controller = new TestController(etalonList);
+            var controller = new TestableGenericRestController(etalonList);
 
-            controller.Put(valueId, value); 
+            controller.Update(valueId, value); 
             var list = controller.Get();
 
             var updatedValue = list.Single(x => x.Id == valueId);
@@ -59,7 +59,7 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Put_CorrectId_OtherElementsOfEntitiesListNotUpdated()
+        public void Update_CorrectId_OtherElementsOfEntitiesListNotUpdated()
         {
             var guid1 = Guid.NewGuid();
             var guid2 = Guid.NewGuid();
@@ -70,9 +70,9 @@ namespace KeysParkingService.Tests
                 new TestEntity() { Id = 2, UniqueId = guid2 },
             };
             var value = new TestEntity() { Id = 3 };
-            var controller = new TestController(etalonList);
+            var controller = new TestableGenericRestController(etalonList);
 
-            controller.Put(value.Id, value);
+            controller.Update(value.Id, value);
             var list = controller.Get();
 
             var notUpdatedElements = list.Where(x => x.Id != value.Id).ToArray();
@@ -84,13 +84,13 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Put_IdAsMethodArgumentAndIdAsValueFieldNotEquals_ThrowArgumentException()
+        public void Update_IdAsMethodArgumentAndIdAsValueFieldNotEquals_ThrowArgumentException()
         {
             var list = GetLongEntitiesList();
             var value = list.First();
-            var controller = new TestController(list);
+            var controller = new TestableGenericRestController(list);
 
-            Assert.Catch<ArgumentException>(new TestDelegate(() => controller.Put(-1, value)), "WrongId");
+            Assert.Catch<ArgumentException>(new TestDelegate(() => controller.Update(-1, value)), "WrongId");
         }
     }
 }

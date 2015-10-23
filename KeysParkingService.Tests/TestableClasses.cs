@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace KeysParkingService.Tests
 {
-    public class TestController : AbstractRestController<TestEntity, int>
+    public class TestableAbstractRestController : AbstractRestController<TestEntity, int>
     {
         private static GenericRestController<TestEntity, int> GetController(IList<TestEntity> list)
         {
             return new GenericRestController<TestEntity, int>(list);
         }
 
-        public TestController(IList<TestEntity> list) : base(GetController(list)) { }
+        public TestableAbstractRestController(IList<TestEntity> list) : base(GetController(list)) { }
 
-        public TestController(IGenericRestController<TestEntity, int> restController) : base(restController) { }
+        public TestableAbstractRestController(IGenericRestController<TestEntity, int> restController) : base(restController) { }
+    }
+
+    public class TestableGenericRestController : GenericRestController<TestEntity, int>
+    {
+        public TestableGenericRestController(List<TestEntity> list) : base(list) { }
     }
 
     public class TestEntity : GenericEntity<int>

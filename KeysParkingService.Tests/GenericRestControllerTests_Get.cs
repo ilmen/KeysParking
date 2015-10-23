@@ -30,7 +30,7 @@ namespace KeysParkingService.Tests
         public void Get_EmptyEntitiesList_ReturnsNull()
         {
             // arrange
-            var controller = new TestController(new List<TestEntity>());
+            var controller = new TestableGenericRestController(new List<TestEntity>());
 
             // act
             var entity = controller.Get(1);
@@ -43,7 +43,7 @@ namespace KeysParkingService.Tests
         public void Get_CorrectId_ReturnsCorrectEntities()
         {
             var list = GetLongEntitiesList();
-            var controller = new TestController(list);
+            var controller = new TestableGenericRestController(list);
 
             // act
             var entity = controller.Get(list.First().Id);
@@ -56,7 +56,7 @@ namespace KeysParkingService.Tests
         public void Get_Always_ReturnsTestEntityInstance()
         {
             var list = GetLongEntitiesList();
-            var controller = new TestController(list);
+            var controller = new TestableGenericRestController(list);
 
             var entity = controller.Get(list.First().Id);
 
@@ -67,7 +67,7 @@ namespace KeysParkingService.Tests
         public void Get_WrongId_ReturnsNull()
         {
             var list = GetLongEntitiesList();
-            var controller = new TestController(list);
+            var controller = new TestableGenericRestController(list);
 
             var entity = controller.Get(-1);
 

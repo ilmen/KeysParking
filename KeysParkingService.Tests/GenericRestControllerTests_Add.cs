@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace KeysParkingService.Tests
 {
     [TestFixture]
-    public class GenericRestControllerTests_Post
+    public class GenericRestControllerTests_Add
     {
         #region Help methods
         private List<TestEntity> GetLongEntitiesList()
@@ -27,17 +27,17 @@ namespace KeysParkingService.Tests
         #endregion
 
         [Test]
-        public void Post_NewValue_ValueAddedToEntitiesList()
+        public void Add_NewValue_ValueAddedToEntitiesList()
         {
             // arrange
             var shortList = GetLongEntitiesList();
             var value = new TestEntity() { Id = 6 };
             if (shortList.Any(x => x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
 
-            var controller = new TestController(shortList);
+            var controller = new TestableGenericRestController(shortList);
 
             // act
-            controller.Post(value);
+            controller.Add(value);
             var list = controller.Get();
 
             // assert
@@ -45,24 +45,24 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Post_NullValue_EntitiesListNotChanged()
+        public void Add_NullValue_EntitiesListNotChanged()
         {
-            var controller = new TestController(new List<TestEntity>());
+            var controller = new TestableGenericRestController(new List<TestEntity>());
 
-            controller.Post(null);
+            controller.Add(null);
             var list = controller.Get();
 
             Assert.True(list.Count() == 0);
         }
 
         [Test]
-        public void Post_DublicateValueId_ThrowsException()
+        public void Add_DublicateValueId_ThrowsException()
         {
             var list = GetLongEntitiesList();
             var entity = list.First();
-            var controller = new TestController(list);
+            var controller = new TestableGenericRestController(list);
 
-            Assert.Catch<InvalidOperationException>(new TestDelegate(() => controller.Post(entity)),"WrongId");
+            Assert.Catch<InvalidOperationException>(new TestDelegate(() => controller.Add(entity)),"WrongId");
         }
     }
 }
