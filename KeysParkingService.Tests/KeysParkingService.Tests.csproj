@@ -48,12 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyListFactoryTests.cs" />
-    <Compile Include="KeysControllerTests_Post.cs" />
-    <Compile Include="KeysControllerTests_Delete.cs" />
-    <Compile Include="KeysControllerTests_GetAll.cs" />
-    <Compile Include="KeysControllerTests_Get.cs" />
-    <Compile Include="KeysControllerTests_Put.cs" />
+    <Compile Include="AbstractRestControllerTests.cs" />
+    <Compile Include="GenericRestControllerTests_Post.cs" />
+    <Compile Include="GenericRestControllerTests_Delete.cs" />
+    <Compile Include="GenericRestControllerTests_GetAll.cs" />
+    <Compile Include="GenericRestControllerTests_Get.cs" />
+    <Compile Include="GenericRestControllerTests_Put.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestController.cs" />
   </ItemGroup>

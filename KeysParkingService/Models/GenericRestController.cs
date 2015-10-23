@@ -25,24 +25,24 @@ namespace KeysParkingService.Models
             EntityStorage = testList;
         }
 
-        public IEnumerable<T> Get()
+        public virtual IEnumerable<T> Get()
         {
             return EntityStorage;
         }
 
-        public T Get(K id)
+        public virtual T Get(K id)
         {
             return EntityStorage.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        public void Add([FromBody]T value)
+        public virtual void Add([FromBody]T value)
         {
             if (value == null) return;
             if (EntityStorage.Any(x => x.Id.Equals(value.Id))) throw new InvalidOperationException("WrongId. Элемент с таким Id уже существует");
             EntityStorage.Add(value);
         }
 
-        public void Update(K id, [FromBody]T value)
+        public virtual void Update(K id, [FromBody]T value)
         {
             if (!id.Equals(value.Id)) throw new ArgumentException("WrongId. Id переданный как параметр метода и Id как поле объекта value не совпадают.");
 
@@ -51,7 +51,7 @@ namespace KeysParkingService.Models
             Add(value);
         }
 
-        public void Delete(K id)
+        public virtual void Delete(K id)
         {
             var toRemove = EntityStorage.FirstOrDefault(x => x.Id.Equals(id));
             if (toRemove != null) EntityStorage.Remove(toRemove);
