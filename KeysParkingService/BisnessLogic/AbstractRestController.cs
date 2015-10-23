@@ -7,10 +7,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-namespace KeysParkingService.Controllers
+namespace KeysParkingService.BisnessLogic
 {
     public abstract class AbstractRestController<T, K> : ApiController
-        where T : class, GenericEntity<K>
+        where T : class, IGenericEntity<K>
         where K : IEquatable<K>
     {
         protected IGenericRestController<T, K> controller;

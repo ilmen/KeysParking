@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KeysParkingService.Models
+namespace KeysParkingService.BisnessLogic
 {
     public interface IGenericRestController<T, K>
-        where T : class, GenericEntity<K>
+        where T : class, IGenericEntity<K>
         where K : IEquatable<K>
     {
         IEnumerable<T> Get();

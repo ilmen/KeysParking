@@ -7,17 +7,17 @@ using System.Runtime.CompilerServices;
 using System.Web.Http;
 [assembly: InternalsVisibleTo("KeysParkingService.Tests")]
 
-namespace KeysParkingService.Models
+namespace KeysParkingService.BisnessLogic
 {
     public class GenericRestController<T, K> : IGenericRestController<T, K>
-        where T : class, GenericEntity<K>
+        where T : class, IGenericEntity<K>
         where K : IEquatable<K>
     {
         IList<T> EntityStorage { get; set; }
 
         public GenericRestController(DbContextKeyParking dbContext, DbSet<T> dbCollection)
         {
-            EntityStorage = new DbSetToIListAdaptor2<T, K>(dbContext, dbCollection);
+            EntityStorage = new DbSetToIListAdaptor<T, K>(dbContext, dbCollection);
         }
 
         internal GenericRestController(IList<T> testList)

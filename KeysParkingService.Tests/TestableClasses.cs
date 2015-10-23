@@ -1,10 +1,6 @@
-﻿using KeysParkingService.Controllers;
-using KeysParkingService.Models;
+﻿using KeysParkingService.BisnessLogic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KeysParkingService.Tests
 {
@@ -25,7 +21,7 @@ namespace KeysParkingService.Tests
         public TestableGenericRestController(List<TestEntity> list) : base(list) { }
     }
 
-    public class TestEntity : GenericEntity<int>
+    public class TestEntity : IGenericEntity<int>
     {
         public int Id
         { get; set; }

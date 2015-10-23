@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using KeysParkingService.BisnessLogic;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace KeysParkingService.Models
 {
 
     [Table("keys", Schema = "public")]
-    public class Key : GenericEntity<int>
+    public class Key : IGenericEntity<int>
     {
         [Key]
         [Column("KeyId")]
