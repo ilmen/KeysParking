@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysParkingService", "KeysParkingService\KeysParkingService.csproj", "{DA260A66-0B88-41DB-8A1E-CFDE1606BACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysParkingService.Tests", "KeysParkingService.Tests\KeysParkingService.Tests.csproj", "{3A9074D2-A5E9-48DD-B7F5-B8A48B701599}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysParkingService.UnitTests", "KeysParkingService.Tests\KeysParkingService.UnitTests.csproj", "{3A9074D2-A5E9-48DD-B7F5-B8A48B701599}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
