@@ -13,9 +13,9 @@ namespace KeysParkingService.Controllers
         where T : class, GenericEntity<K>
         where K : IEquatable<K>
     {
-        protected GenericRestController<T, K> controller;
+        protected IGenericRestController<T, K> controller;
 
-        public AbstractRestController(GenericRestController<T, K> restController)
+        public AbstractRestController(IGenericRestController<T, K> restController)
         {
             this.controller = restController;
         }

@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using KeysParkingService.Models;
+using NSubstitute;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,63 +29,62 @@ namespace KeysParkingService.Tests
         [Test]
         public void GetAll_Always_CallGetAllMethodGenericRestController()
         {
-            var controller = new TestController(GetLongEntitiesList());
-            var mock = controller.GetController();
+            var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
+            var controller = new TestController(mock);
 
             var list = controller.Get();
 
-            Assert.True(mock.GetAllCalled);
+            mock.Received().Get();
         }
 
         [Test]
         public void Get_Always_CallGetOneMethodGenericRestController()
         {
-            var controllerList = GetLongEntitiesList();
-            var value = controllerList.First();
-            var controller = new TestController(controllerList);
-            var mock = controller.GetController();
+            var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
+            mock.Get(1).Returns(new TestEntity() { Id = 1 });
+            var controller = new TestController(mock);
 
-            var list = controller.Get(value.Id);
+            var value = controller.Get(1);
 
-            Assert.True(mock.GetOneCalled);
+            mock.Received().Get(Arg.Any<int>());
         }
 
         [Test]
         public void Post_Always_CallAddMethodGenericRestController()
         {
             var value = new TestEntity() { Id = 10 };
-            var controller = new TestController(GetLongEntitiesList());
-            var mock = controller.GetController();
+            var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
+            var controller = new TestController(mock);
 
             controller.Post(value);
 
-            Assert.True(mock.AddCalled);
+            mock.Received().Add(value);
         }
 
         [Test]
         public void Put_Always_CallUpdateMethodGenericRestController()
         {
-            var controllerList = GetLongEntitiesList();
-            var value = new TestEntity() { Id = controllerList.First().Id, UniqueId = Guid.NewGuid() };
-            var controller = new TestController(controllerList);
-            var mock = controller.GetController();
+            var list = GetLongEntitiesList();
+            var value = new TestEntity() { Id = list.First().Id, UniqueId = Guid.NewGuid() };
+            var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
+            mock.Get().Returns(list);
+            var controller = new TestController(mock);
 
             controller.Put(value.Id, value);
 
-            Assert.True(mock.UpdateCalled);
+            mock.Received().Update(value.Id, value);
         }
 
         [Test]
         public void Delete_Always_CallDeleteMethodGenericRestController()
         {
-            var controllerList = GetLongEntitiesList();
-            var value = controllerList.First();
-            var controller = new TestController(controllerList);
-            var mock = controller.GetController();
+            var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
+            mock.Get(1).Returns(new TestEntity() { Id = 1 });
+            var controller = new TestController(mock);
 
-            controller.Delete(value.Id);
+            controller.Delete(1);
 
-            Assert.True(mock.DeleteCalled);
+            mock.Received().Delete(Arg.Any<int>());
         }
     }
 }

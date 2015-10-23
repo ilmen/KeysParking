@@ -139,6 +139,7 @@
     <Compile Include="DataAccess\DbSetToIListAdaptor.cs" />
     <Compile Include="Models\GenericEntity.cs" />
     <Compile Include="Models\GenericRestController.cs" />
+    <Compile Include="Models\IGenericRestController.cs" />
     <Compile Include="Models\Key.cs" />
     <Compile Include="Models\KeyGroup.cs" />
     <Compile Include="Models\EntityListFactory.cs" />
