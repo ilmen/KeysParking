@@ -10,7 +10,7 @@ namespace KeysParkingService.Tests
     [TestFixture]
     public class AbstractRestControllerTests
     {
-        #region Help methods
+        #region Help MethodGenericRestControllers
         private List<TestEntity> GetLongEntitiesList()
         {
             return new List<TestEntity>()
@@ -25,7 +25,7 @@ namespace KeysParkingService.Tests
         #endregion
 
         [Test]
-        public void GetAll_Always_CallGenericRestController()
+        public void GetAll_Always_CallGetAllMethodGenericRestController()
         {
             var controller = new TestController(GetLongEntitiesList());
             var mock = controller.GetController();
@@ -36,7 +36,7 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Get_Always_CallGenericRestController()
+        public void Get_Always_CallGetOneMethodGenericRestController()
         {
             var controllerList = GetLongEntitiesList();
             var value = controllerList.First();
@@ -49,7 +49,7 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Post_Always_CallGenericRestController()
+        public void Post_Always_CallAddMethodGenericRestController()
         {
             var value = new TestEntity() { Id = 10 };
             var controller = new TestController(GetLongEntitiesList());
@@ -61,7 +61,7 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Put_Always_CallGenericRestController()
+        public void Put_Always_CallUpdateMethodGenericRestController()
         {
             var controllerList = GetLongEntitiesList();
             var value = new TestEntity() { Id = controllerList.First().Id, UniqueId = Guid.NewGuid() };
@@ -74,7 +74,7 @@ namespace KeysParkingService.Tests
         }
 
         [Test]
-        public void Delete_Always_CallGenericRestController()
+        public void Delete_Always_CallDeleteMethodGenericRestController()
         {
             var controllerList = GetLongEntitiesList();
             var value = controllerList.First();
