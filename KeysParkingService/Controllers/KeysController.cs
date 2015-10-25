@@ -4,7 +4,7 @@ using KeysParkingService.Models;
 
 namespace KeysParkingService.Controllers
 {
-    public class KeysController : AbstractRestController<Key, int>
+    public class KeysController : UniversalRestController<Key, int>
     {
         private static GenericRestController<Key, int> GetRestController()
         {

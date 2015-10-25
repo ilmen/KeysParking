@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractRestControllerTests.cs" />
+    <Compile Include="UniversalRestControllerTests.cs" />
     <Compile Include="GenericRestControllerTests_Add.cs" />
     <Compile Include="GenericRestControllerTests_Delete.cs" />
     <Compile Include="GenericRestControllerTests_GetAll.cs" />

@@ -32,7 +32,7 @@ namespace KeysParkingService.Tests
             // arrange
             var list = GetLongEntitiesList();
             var elementToRemove = list.First();
-            var controller = new TestableGenericRestController(list);
+            var controller = GenericRestControllerFactory.CreateController(list);
 
             // act
             controller.Delete(elementToRemove.Id);
@@ -47,7 +47,7 @@ namespace KeysParkingService.Tests
             // arrange
             var entity = new TestEntity() { Id = 1 };
             var list = new List<TestEntity>() { entity };
-            var controller = new TestableGenericRestController(list);
+            var controller = GenericRestControllerFactory.CreateController(list);
 
             // act
             controller.Delete(entity.Id);
@@ -60,7 +60,7 @@ namespace KeysParkingService.Tests
         public void Delete_EmptyEntitiesList_CallDeleteWithoutException()
         {
             // arrange
-            var controller = new TestableGenericRestController(new List<TestEntity>());
+            var controller = GenericRestControllerFactory.CreateController(new List<TestEntity>());
 
             // act
             // assert
@@ -72,7 +72,7 @@ namespace KeysParkingService.Tests
         {
             // arrange
             var list = GetLongEntitiesList();
-            var controller = new TestableGenericRestController(list);
+            var controller = GenericRestControllerFactory.CreateController(list);
 
             // act
             controller.Delete(-1);

@@ -33,7 +33,7 @@ namespace KeysParkingService.Tests
             var shortList = GetLongEntitiesList();
             var value = new TestEntity() { Id = 6 };
             if (shortList.Any( x=> x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
-            var controller = new TestableGenericRestController(shortList);
+            var controller = GenericRestControllerFactory.CreateController(shortList);
 
             // act
             controller.Update(value.Id, value);
@@ -49,7 +49,7 @@ namespace KeysParkingService.Tests
             var etalonList = GetLongEntitiesList();
             var valueId = etalonList.First().Id;
             var value = new TestEntity() { Id = valueId, UniqueId = Guid.NewGuid() };
-            var controller = new TestableGenericRestController(etalonList);
+            var controller = GenericRestControllerFactory.CreateController(etalonList);
 
             controller.Update(valueId, value); 
             var list = controller.Get();
@@ -70,7 +70,7 @@ namespace KeysParkingService.Tests
                 new TestEntity() { Id = 2, UniqueId = guid2 },
             };
             var value = new TestEntity() { Id = 3 };
-            var controller = new TestableGenericRestController(etalonList);
+            var controller = GenericRestControllerFactory.CreateController(etalonList);
 
             controller.Update(value.Id, value);
             var list = controller.Get();
@@ -88,7 +88,7 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongEntitiesList();
             var value = list.First();
-            var controller = new TestableGenericRestController(list);
+            var controller = GenericRestControllerFactory.CreateController(list);
 
             Assert.Catch<ArgumentException>(new TestDelegate(() => controller.Update(-1, value)), "WrongId");
         }

@@ -4,21 +4,20 @@ using System.Collections.Generic;
 
 namespace KeysParkingService.Tests
 {
-    public class TestableAbstractRestController : AbstractRestController<TestEntity, int>
+    public static class UniversalRestControllerFactory
     {
-        private static GenericRestController<TestEntity, int> GetController(IList<TestEntity> list)
+        public static UniversalRestController<TestEntity, int> GetController(IGenericRestController<TestEntity, int> restController)
+        {
+            return new UniversalRestController<TestEntity, int>(restController);
+        }
+    }
+
+    public static class GenericRestControllerFactory
+    {
+        public static GenericRestController<TestEntity, int> CreateController(IList<TestEntity> list)
         {
             return new GenericRestController<TestEntity, int>(list);
         }
-
-        public TestableAbstractRestController(IList<TestEntity> list) : base(GetController(list)) { }
-
-        public TestableAbstractRestController(IGenericRestController<TestEntity, int> restController) : base(restController) { }
-    }
-
-    public class TestableGenericRestController : GenericRestController<TestEntity, int>
-    {
-        public TestableGenericRestController(List<TestEntity> list) : base(list) { }
     }
 
     public class TestEntity : IGenericEntity<int>

@@ -31,7 +31,7 @@ namespace KeysParkingService.Tests
         public void GetAll_EmptyEntitiesList_ReturnsEmptyList()
         {
             // arrange
-            var controller = new TestableGenericRestController(new List<TestEntity>());
+            var controller = GenericRestControllerFactory.CreateController(new List<TestEntity>());
 
             // act
             var list = controller.Get();
@@ -44,7 +44,7 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_ReturnsNotNull()
         {
             // arrange
-            var controller = new TestableGenericRestController(new List<TestEntity>());
+            var controller = GenericRestControllerFactory.CreateController(new List<TestEntity>());
 
             // act
             var list = controller.Get();
@@ -56,7 +56,7 @@ namespace KeysParkingService.Tests
         [Test]
         public void GetAll_Always_ReturnsIEnumerableEntitiesCollection()
         {
-            var controller = new TestableGenericRestController(new List<TestEntity>());
+            var controller = GenericRestControllerFactory.CreateController(new List<TestEntity>());
 
             var list = controller.Get();
 
@@ -67,7 +67,7 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_ReturnsAllEntities()
         {
             var etalonList = GetLongEntitiesList();
-            var controller = new TestableGenericRestController(etalonList);
+            var controller = GenericRestControllerFactory.CreateController(etalonList);
 
             var list = controller.Get();
 

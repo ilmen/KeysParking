@@ -8,7 +8,7 @@ using System.Linq;
 namespace KeysParkingService.Tests
 {
     [TestFixture]
-    public class AbstractRestControllerTests
+    public class UniversalRestControllerTests
     {
         #region Help MethodGenericRestControllers
         private List<TestEntity> GetLongEntitiesList()
@@ -28,7 +28,7 @@ namespace KeysParkingService.Tests
         public void GetAll_Always_CallGetAllMethodGenericRestController()
         {
             var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
-            var controller = new TestableAbstractRestController(mock);
+            var controller = UniversalRestControllerFactory.GetController(mock);
 
             var list = controller.Get();
 
@@ -40,7 +40,7 @@ namespace KeysParkingService.Tests
         {
             var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
             mock.Get(1).Returns(new TestEntity() { Id = 1 });
-            var controller = new TestableAbstractRestController(mock);
+            var controller = UniversalRestControllerFactory.GetController(mock);
 
             var value = controller.Get(1);
 
@@ -52,7 +52,7 @@ namespace KeysParkingService.Tests
         {
             var value = new TestEntity() { Id = 10 };
             var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
-            var controller = new TestableAbstractRestController(mock);
+            var controller = UniversalRestControllerFactory.GetController(mock);
 
             controller.Post(value);
 
@@ -66,7 +66,7 @@ namespace KeysParkingService.Tests
             var value = new TestEntity() { Id = list.First().Id, UniqueId = Guid.NewGuid() };
             var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
             mock.Get().Returns(list);
-            var controller = new TestableAbstractRestController(mock);
+            var controller = UniversalRestControllerFactory.GetController(mock);
 
             controller.Put(value.Id, value);
 
@@ -78,7 +78,7 @@ namespace KeysParkingService.Tests
         {
             var mock = Substitute.For<IGenericRestController<TestEntity, int>>();
             mock.Get(1).Returns(new TestEntity() { Id = 1 });
-            var controller = new TestableAbstractRestController(mock);
+            var controller = UniversalRestControllerFactory.GetController(mock);
 
             controller.Delete(1);
 

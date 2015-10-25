@@ -9,13 +9,13 @@ using System.Web.Http;
 
 namespace KeysParkingService.BisnessLogic
 {
-    public abstract class AbstractRestController<T, K> : ApiController
+    public class UniversalRestController<T, K> : ApiController
         where T : class, IGenericEntity<K>
         where K : IEquatable<K>
     {
         protected IGenericRestController<T, K> controller;
 
-        public AbstractRestController(IGenericRestController<T, K> restController)
+        public UniversalRestController(IGenericRestController<T, K> restController)
         {
             this.controller = restController;
         }

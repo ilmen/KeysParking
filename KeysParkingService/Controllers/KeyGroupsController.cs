@@ -5,7 +5,7 @@ using System;
 
 namespace KeysParkingService.Controllers
 {
-    public class KeyGroupsController : AbstractRestController<KeyGroup, Guid>
+    public class KeyGroupsController : UniversalRestController<KeyGroup, Guid>
     {
         private static GenericRestController<KeyGroup, Guid> GetRestController()
         {

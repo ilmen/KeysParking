@@ -34,7 +34,7 @@ namespace KeysParkingService.Tests
             var value = new TestEntity() { Id = 6 };
             if (shortList.Any(x => x.Id == value.Id)) throw new Exception("Неверная конфигурация теста. Value не должен содержаться в исходном списке ключей.");
 
-            var controller = new TestableGenericRestController(shortList);
+            var controller = GenericRestControllerFactory.CreateController(shortList);
 
             // act
             controller.Add(value);
@@ -47,7 +47,7 @@ namespace KeysParkingService.Tests
         [Test]
         public void Add_NullValue_EntitiesListNotChanged()
         {
-            var controller = new TestableGenericRestController(new List<TestEntity>());
+            var controller = GenericRestControllerFactory.CreateController(new List<TestEntity>());
 
             controller.Add(null);
             var list = controller.Get();
@@ -60,7 +60,7 @@ namespace KeysParkingService.Tests
         {
             var list = GetLongEntitiesList();
             var entity = list.First();
-            var controller = new TestableGenericRestController(list);
+            var controller = GenericRestControllerFactory.CreateController(list);
 
             Assert.Catch<InvalidOperationException>(new TestDelegate(() => controller.Add(entity)),"WrongId");
         }
