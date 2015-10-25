@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysParkingService", "KeysP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysParkingService.UnitTests", "KeysParkingService.Tests\KeysParkingService.UnitTests.csproj", "{3A9074D2-A5E9-48DD-B7F5-B8A48B701599}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysParkingService.IntegrityTests", "KeysParkingService.IntegrityTests\KeysParkingService.IntegrityTests.csproj", "{ACF479E3-E162-4BE4-BD13-6AF529E7FA15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3A9074D2-A5E9-48DD-B7F5-B8A48B701599}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A9074D2-A5E9-48DD-B7F5-B8A48B701599}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A9074D2-A5E9-48DD-B7F5-B8A48B701599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF479E3-E162-4BE4-BD13-6AF529E7FA15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF479E3-E162-4BE4-BD13-6AF529E7FA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF479E3-E162-4BE4-BD13-6AF529E7FA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF479E3-E162-4BE4-BD13-6AF529E7FA15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
