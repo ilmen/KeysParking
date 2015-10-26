@@ -1,7 +1,7 @@
-﻿using KeysParkingService.Models;
+﻿using KPService.Models;
 using System.Data.Entity;
 
-namespace KeysParkingService.DataAccess
+namespace KPService.DataAccess
 {
     public sealed class DbContextKeyParking : DbContext
     {

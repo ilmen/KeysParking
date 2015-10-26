@@ -1,9 +1,9 @@
-﻿using KeysParkingService.DataAccess;
-using KeysParkingService.Models;
+﻿using KPService.DataAccess;
+using KPService.Models;
 using KPLibrary;
 using System;
 
-namespace KeysParkingService.Controllers
+namespace KPService.Controllers
 {
     public class KeyGroupsController : UniversalRestController<KeyGroup, Guid>
     {

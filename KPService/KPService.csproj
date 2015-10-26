@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DA260A66-0B88-41DB-8A1E-CFDE1606BACF}</ProjectGuid>
+    <ProjectGuid>{ADC93A95-DEF1-4E2C-B16B-E78E5425D06A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KeysParkingService</RootNamespace>
-    <AssemblyName>KeysParkingService</AssemblyName>
+    <RootNamespace>KPService</RootNamespace>
+    <AssemblyName>KPService</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
