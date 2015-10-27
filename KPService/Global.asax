@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="KPService.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="KPService.WebApiApplication" Language="C#" %>

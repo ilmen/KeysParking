@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
-using System.Web.Http;
 
 namespace KPService
 {
-    public class Global : HttpApplication
+    public class WebApiApplication : System.Web.HttpApplication
     {
-        void Application_Start(object sender, EventArgs e)
+        protected void Application_Start()
+        {
+            UseOnlyJSONSerializer();
+
+            GlobalConfiguration.Configure(WebApiConfig.Register); 
+        }
+
+        private static void UseOnlyJSONSerializer()
         {
             // Set serializer settings
             // read more http://www.asp.net/web-api/overview/formats-and-model-binding/json-and-xml-serialization
@@ -20,11 +26,6 @@ namespace KPService
             var jsonSettings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
             jsonSettings.Formatting = Newtonsoft.Json.Formatting.Indented;                  // indented JSON
             jsonSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;   // only UTC time in JSON fields
-
-            // Code that runs on application startup
-            AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
     }
 }

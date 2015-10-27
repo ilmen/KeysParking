@@ -1,6 +1,5 @@
-﻿using KPService.DataAccess;
-using KPService.Models;
-using KPLibrary;
+﻿using KPService.Models;
+using KPService.RestLibrary;
 using System;
 
 namespace KPService.Controllers
@@ -9,14 +8,11 @@ namespace KPService.Controllers
     {
         private static GenericRestController<KeyGroup, Guid> GetRestController()
         {
-            var dbContext = DbContextKeyParking.Instance;
+            var dbContext = PKDbContext.Instance;
             return new GenericRestController<KeyGroup, Guid>(dbContext, dbContext.KeyGroups);
         }
 
         public KeyGroupsController()
-            : base(KeyGroupsController.GetRestController())
-        {
-
-        }
+            : base(KeyGroupsController.GetRestController()) { }
     }
 }

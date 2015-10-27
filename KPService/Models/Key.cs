@@ -1,11 +1,10 @@
-﻿using KPLibrary;
+﻿using KPService.RestLibrary;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KPService.Models
 {
-
     [Table("keys", Schema = "public")]
     public class Key : IGenericEntity<int>
     {
