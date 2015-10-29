@@ -9,6 +9,7 @@ using System.Linq;
 namespace KPLibrary.UnitTests
 {
     [TestFixture]
+    [Category("UnitTests")]
     public class UniversalRestControllerTests
     {
         #region Help MethodGenericRestControllers

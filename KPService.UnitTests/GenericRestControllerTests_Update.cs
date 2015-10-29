@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace KPLibrary.UnitTests
 {
     [TestFixture]
+    [Category("UnitTests")]
     public class GenericRestControllerTests_Update
     {
         #region Help methods

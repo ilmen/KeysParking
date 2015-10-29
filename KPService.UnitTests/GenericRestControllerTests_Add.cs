@@ -7,6 +7,7 @@ using System.Text;
 namespace KPLibrary.UnitTests
 {
     [TestFixture]
+    [Category("UnitTests")]
     public class GenericRestControllerTests_Add
     {
         #region Help methods

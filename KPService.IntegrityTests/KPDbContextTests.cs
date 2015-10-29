@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace KPService.IntegrityTests
 {
     [TestFixture]
+    [Category("IntegrityTests")]
     public class KPDbContextTests
     {
         [Test]

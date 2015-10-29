@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 namespace KPService.IntegrityTests
 {
     [TestFixture]
+    [Category("IntegrityTests")]
     public class KeysControllerTests
     {
         [Test]
-        public void GetAll_Always_ReturnsThreeKeys()
+        public void GetOne_Always_ReturnsNotNull()
         {
             var controller = new KeysController();
 
-            var keys = controller.Get();
+            var key = controller.Get(1);
 
-            throw new Exception(keys.Count().ToString());
-            Assert.True(keys.Count() == 3);
+            Assert.NotNull(key);
         }
 
         [Test]
