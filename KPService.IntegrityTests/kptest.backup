@@ -1,0 +1,162 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.4
+-- Dumped by pg_dump version 9.4.4
+-- Started on 2015-10-29 13:19:37
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 2003 (class 1262 OID 16394)
+-- Name: kptest; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE kptest WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Russian_Russia.1251' LC_CTYPE = 'Russian_Russia.1251';
+
+
+ALTER DATABASE kptest OWNER TO postgres;
+
+\connect kptest
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 174 (class 3079 OID 11855)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2006 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 173 (class 1259 OID 16409)
+-- Name: keygroups; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE keygroups (
+    "Name" text,
+    "GroupId" uuid NOT NULL
+);
+
+
+ALTER TABLE keygroups OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 16395)
+-- Name: keys; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE keys (
+    "KeyId" integer NOT NULL,
+    login text NOT NULL,
+    password text NOT NULL,
+    link text,
+    "CreateTime" timestamp with time zone,
+    "GroupId" uuid
+);
+
+
+ALTER TABLE keys OWNER TO postgres;
+
+--
+-- TOC entry 2007 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: TABLE keys; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE keys IS 'Keys storage';
+
+
+--
+-- TOC entry 1888 (class 2606 OID 16428)
+-- Name: GroupPrimaryId; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY keygroups
+    ADD CONSTRAINT "GroupPrimaryId" PRIMARY KEY ("GroupId");
+
+
+--
+-- TOC entry 1886 (class 2606 OID 16408)
+-- Name: id; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY keys
+    ADD CONSTRAINT id PRIMARY KEY ("KeyId");
+
+
+--
+-- TOC entry 1889 (class 2606 OID 16429)
+-- Name: GroupRefId; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY keys
+    ADD CONSTRAINT "GroupRefId" FOREIGN KEY ("GroupId") REFERENCES keygroups("GroupId");
+
+
+--
+-- TOC entry 2005 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- TOC entry 2000 (class 0 OID 16409)
+-- Dependencies: 173
+-- Data for Name: keygroups; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO keygroups ("Name", "GroupId") VALUES ('All', '750520aa-1e27-457c-9e6d-2144d3c897ee');
+INSERT INTO keygroups ("Name", "GroupId") VALUES ('SpecKey', '009159ce-af3f-4c8d-9eae-a9244eea2067');
+
+
+--
+-- TOC entry 1999 (class 0 OID 16395)
+-- Dependencies: 172
+-- Data for Name: keys; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO keys ("KeyId", login, password, link, "CreateTime", "GroupId") VALUES (1, 'qwerty', 'qwerty', 'www.qwerty.com', '2015-09-30 12:07:15.345+05', '009159ce-af3f-4c8d-9eae-a9244eea2067');
+INSERT INTO keys ("KeyId", login, password, link, "CreateTime", "GroupId") VALUES (2, 'mylogin', 'mypassword', 'pgAdmin III', '2014-02-14 07:07:15.345+06', '009159ce-af3f-4c8d-9eae-a9244eea2067');
+INSERT INTO keys ("KeyId", login, password, link, "CreateTime", "GroupId") VALUES (3, 'adm', 'adm', 'IntegrityAdm', '2013-01-01 11:04:15.345+06', '750520aa-1e27-457c-9e6d-2144d3c897ee');
+
+
+-- Completed on 2015-10-29 13:19:38
+
+--
+-- PostgreSQL database dump complete
+--
+

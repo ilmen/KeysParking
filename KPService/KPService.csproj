@@ -105,7 +105,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PKDbContext.cs" />
+    <Compile Include="Models\KPDbContext.cs" />
     <Compile Include="Models\Key.cs" />
     <Compile Include="Models\KeyGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

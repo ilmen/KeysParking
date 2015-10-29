@@ -12,6 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8127C1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPService.IntegrityTests", "KPService.IntegrityTests\KPService.IntegrityTests.csproj", "{3C122081-A6E2-4017-ABAA-E341D19EF595}"
+	ProjectSection(ProjectDependencies) = postProject
+		{638CF1CD-9D8D-45D7-9CDE-1E95BED14CF1} = {638CF1CD-9D8D-45D7-9CDE-1E95BED14CF1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPService", "KPService\KPService.csproj", "{638CF1CD-9D8D-45D7-9CDE-1E95BED14CF1}"
 EndProject

@@ -2,11 +2,11 @@
 
 namespace KPService.Models
 {
-    public sealed class PKDbContext : DbContext
+    public sealed class KPDbContext : DbContext
     {
-        private static readonly PKDbContext _Instance = new PKDbContext();
+        private static readonly KPDbContext _Instance = new KPDbContext();
 
-        public static PKDbContext Instance
+        public static KPDbContext Instance
         {
             get
             {
@@ -14,7 +14,7 @@ namespace KPService.Models
             }
         }
 
-        private PKDbContext() : base(nameOrConnectionString: "MonkeyFist")
+        private KPDbContext() : base(nameOrConnectionString: "MonkeyFist")
         {
             //var testingPostgres = new F2F.Testing.NUnit.Npgsql.PostgreSQLFeature("");
         }

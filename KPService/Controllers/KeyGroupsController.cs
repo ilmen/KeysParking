@@ -8,7 +8,7 @@ namespace KPService.Controllers
     {
         private static GenericRestController<KeyGroup, Guid> GetRestController()
         {
-            var dbContext = PKDbContext.Instance;
+            var dbContext = KPDbContext.Instance;
             return new GenericRestController<KeyGroup, Guid>(dbContext, dbContext.KeyGroups);
         }
 
