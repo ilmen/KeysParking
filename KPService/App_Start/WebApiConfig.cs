@@ -11,12 +11,16 @@ namespace KPService
         {
             // Конфигурация и службы веб-API
 
+            // оставляем только JSON сериализатор
+            config.Formatters.Clear();
+            config.Formatters.Add(new System.Net.Http.Formatting.JsonMediaTypeFormatter());
+
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api10/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

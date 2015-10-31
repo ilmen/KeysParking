@@ -15,7 +15,10 @@ namespace KPService.Models
 
             modelBuilder.Entity<KeyGroup>().ToTable("keygroups", "public");
             modelBuilder.Entity<KeyGroup>().HasKey(k => k.Id);
+
+            modelBuilder.Entity<KeyGroup>().Property(p => p.Id).HasColumnName("groupid");
             modelBuilder.Entity<KeyGroup>().Property(p => p.Name).IsRequired();
+            modelBuilder.Entity<KeyGroup>().Property(p => p.Name).HasColumnName("name");
         }
     }
 }
