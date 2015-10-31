@@ -13,6 +13,14 @@ namespace KPService.Models
             : base(connStrProvider.ConnectionString)
         { }
 
+        public string ReadOnlyConnectionString
+        {
+            get
+            {
+                return base.Database.Connection.ConnectionString;
+            }
+        }
+
         public DbSet<Key> Keys
         { get; set; }
 
