@@ -100,20 +100,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\KeyGroupsController.cs" />
-    <Compile Include="Controllers\KeysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConnectionStringProvider.cs" />
+    <Compile Include="Models\IConnectionStringProvider.cs" />
+    <Compile Include="Models\KeyFluentMapDecorator.cs" />
+    <Compile Include="Models\KeyGroupFluentMapDecorator.cs" />
     <Compile Include="Models\KPDbContext.cs" />
-    <Compile Include="Models\Key.cs" />
-    <Compile Include="Models\KeyGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestLibrary\DbSetToIListAdaptor.cs" />
-    <Compile Include="RestLibrary\GenericRestController.cs" />
-    <Compile Include="RestLibrary\IGenericEntity.cs" />
-    <Compile Include="RestLibrary\IGenericRestController.cs" />
-    <Compile Include="RestLibrary\UniversalRestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -124,7 +119,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\KPLibrary\KPLibrary.csproj">
+      <Project>{249441eb-fe54-48ae-ba65-b39363e93d8b}</Project>
+      <Name>KPLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

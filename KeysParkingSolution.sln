@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPService", "KPService\KPSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPService.UnitTests", "KPService.UnitTests\KPService.UnitTests.csproj", "{E2554366-A356-4153-A65F-5E7C7E5E8C61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPLibrary", "KPLibrary\KPLibrary.csproj", "{249441EB-FE54-48AE-BA65-B39363E93D8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Android = Debug|Android
@@ -246,6 +248,42 @@ Global
 		{E2554366-A356-4153-A65F-5E7C7E5E8C61}.Release|Windows-ARM.ActiveCfg = Release|Any CPU
 		{E2554366-A356-4153-A65F-5E7C7E5E8C61}.Release|Windows-x64.ActiveCfg = Release|Any CPU
 		{E2554366-A356-4153-A65F-5E7C7E5E8C61}.Release|Windows-x86.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|iOS.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Windows Phone (Universal).ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Windows Phone 8.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Windows-AnyCPU.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Windows-ARM.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Windows-x64.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Debug|Windows-x86.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Android.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Any CPU.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Any CPU.Build.0 = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|iOS.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Mixed Platforms.Build.0 = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Windows Phone (Universal).ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Windows Phone 8.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Windows-AnyCPU.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Windows-ARM.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Windows-x64.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Distribution|Windows-x86.ActiveCfg = Debug|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Android.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|iOS.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Windows Phone (Universal).ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Windows Phone 8.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Windows-AnyCPU.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Windows-ARM.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Windows-x64.ActiveCfg = Release|Any CPU
+		{249441EB-FE54-48AE-BA65-B39363E93D8B}.Release|Windows-x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

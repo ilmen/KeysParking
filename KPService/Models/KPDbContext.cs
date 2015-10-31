@@ -1,26 +1,30 @@
-﻿using System.Data.Entity;
+﻿using KPLibrary;
+using System.Data.Entity;
 
 namespace KPService.Models
 {
     public sealed class KPDbContext : DbContext
     {
-        private static readonly KPDbContext _Instance = new KPDbContext();
+        public KPDbContext()
+            : this(new DefaultConnectionStringProvider())
+        { }
 
-        public static KPDbContext Instance
+        public KPDbContext(IConnectionStringProvider connStrProvider)
+            : base(connStrProvider.ConnectionString)
+        { }
+
+        public DbSet<Key> Keys
+        { get; set; }
+
+        public DbSet<KeyGroup> KeyGroups
+        { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            get
-            {
-                return _Instance;
-            }
-        }
+            new KeyFluentMapDecorator().Decorate(modelBuilder);
+            new KeyGroupFluentMapDecorator().Decorate(modelBuilder);
 
-        private KPDbContext() : base(nameOrConnectionString: "MonkeyFist")
-        {
-            //var testingPostgres = new F2F.Testing.NUnit.Npgsql.PostgreSQLFeature("");
+            base.OnModelCreating(modelBuilder);
         }
-        
-        public DbSet<Key> Keys { get; set; }
-
-        public DbSet<KeyGroup> KeyGroups { get; set; }
     }
 }
