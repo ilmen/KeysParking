@@ -16,7 +16,7 @@ namespace KPService
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api10/{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
