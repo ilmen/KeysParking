@@ -42,6 +42,22 @@ namespace KPService.Tests.IntegrationTests
 
                 Assert.IsInstanceOf<DbSet<Key>>(keys);
             }
+
+
+            [Test]
+            public void KeysDbSet_Always_ReturnsKeyWithAllNotNullProperties()
+            {
+                var db = GetTestDbContext();
+
+                var key = db.Keys.First(x => x.Id == 1);
+
+                var propList = key.GetType().GetProperties();
+                foreach (var prop in propList)
+                {
+                    var value = prop.GetValue(key);
+                    Assert.NotNull(value, "Обнаружено незагруженное поле " + prop.Name + " модели " + key.GetType().ToString() + ". Предварительно проверьте чтобы в тестовой БД в таблице была сущность с id = " + 1 + " и у нее все поля были заполнены (не Null). Если тестовые данные верны, а поле так и не загружено - проверьте Fluent Mapping класса " + key.GetType().ToString() + ".");
+                }
+            }
         }
     }
 }
