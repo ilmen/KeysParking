@@ -20,8 +20,7 @@ namespace KPService.Models
             modelBuilder.Entity<Key>().Property(p => p.Login).HasColumnName("login");
             modelBuilder.Entity<Key>().Property(p => p.Password).IsRequired();
             modelBuilder.Entity<Key>().Property(p => p.Password).HasColumnName("password");
-            //modelBuilder.Entity<Key>().Property(p => p.SiteLink).HasColumnName("link");
-            modelBuilder.Entity<Key>().Ignore(p => p.SiteLink);
+            modelBuilder.Entity<Key>().Property(p => p.SiteLink).HasColumnName("link");
         }
     }
 }
