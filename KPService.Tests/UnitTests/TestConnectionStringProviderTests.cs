@@ -11,14 +11,14 @@ namespace KPService.Tests.UnitTests
     public partial class UnitTests
     {
         [TestFixture]
-        public class DefaultConnectionStringProviderTests
+        public class TestConnectionStringProviderTests
         {
             [Test]
             public void ConnectionString_Always_ReturnsCorrectCSName()
             {
-                var dcsp = new DefaultConnectionStringProvider();
+                var dcsp = new TestConnectionStringProvider();
 
-                StringAssert.AreEqualIgnoringCase("DefaultConnection", dcsp.ConnectionString);
+                StringAssert.AreEqualIgnoringCase("TestConnection", dcsp.ConnectionString);
             }
         }
     }
